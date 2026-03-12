@@ -1,0 +1,913 @@
+ Image retailflow-product-service Building 
+ Image retailflow-order-service Building 
+ Image retailflow-user-service Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.66kB done
+#1 DONE 0.0s
+
+#2 [user-service internal] load build definition from Dockerfile
+#2 transferring dockerfile: 169B done
+#2 DONE 0.0s
+
+#3 [order-service internal] load build definition from Dockerfile
+#3 transferring dockerfile: 169B done
+#3 DONE 0.1s
+
+#4 [product-service internal] load build definition from Dockerfile
+#4 transferring dockerfile: 232B done
+#4 DONE 0.1s
+
+#5 [order-service internal] load metadata for docker.io/library/node:20-slim
+#5 ...
+
+#6 [auth] library/node:pull token for registry-1.docker.io
+#6 DONE 0.0s
+
+#7 [auth] library/python:pull token for registry-1.docker.io
+#7 DONE 0.0s
+
+#8 [product-service internal] load metadata for docker.io/library/python:3.11-slim
+#8 DONE 3.2s
+
+#5 [order-service internal] load metadata for docker.io/library/node:20-slim
+#5 DONE 3.2s
+
+#9 [order-service internal] load .dockerignore
+#9 transferring context: 2B done
+#9 DONE 0.0s
+
+#10 [user-service internal] load .dockerignore
+#10 transferring context: 2B done
+#10 DONE 0.0s
+
+#11 [user-service 1/5] FROM docker.io/library/node:20-slim@sha256:a82f40540f5959e0003fb7b3c0f80490def2927be8bdbee7e3e0ac65cce3be92
+#11 DONE 0.0s
+
+#12 [product-service internal] load .dockerignore
+#12 transferring context: 2B done
+#12 DONE 0.0s
+
+#13 [user-service internal] load build context
+#13 transferring context: 89B done
+#13 DONE 0.1s
+
+#14 [product-service 1/5] FROM docker.io/library/python:3.11-slim@sha256:d6e4d224f70f9e0172a06a3a2eba2f768eb146811a349278b38fff3a36463b47
+#14 DONE 0.0s
+
+#15 [order-service internal] load build context
+#15 transferring context: 89B 0.0s done
+#15 DONE 0.1s
+
+#16 [product-service internal] load build context
+#16 transferring context: 91B done
+#16 DONE 0.1s
+
+#17 [order-service 4/5] RUN npm install --production
+#17 CACHED
+
+#18 [order-service 3/5] COPY package.json .
+#18 CACHED
+
+#19 [order-service 5/5] COPY src/ ./src/
+#19 CACHED
+
+#20 [product-service 2/5] WORKDIR /app
+#20 CACHED
+
+#21 [product-service 4/5] RUN pip install --no-cache-dir -r requirements.txt
+#21 CACHED
+
+#22 [product-service 3/5] COPY requirements.txt .
+#22 CACHED
+
+#23 [product-service 5/5] COPY app/ .
+#23 CACHED
+
+#24 [user-service 2/5] WORKDIR /app
+#24 CACHED
+
+#25 [user-service 4/5] RUN npm install --production
+#25 CACHED
+
+#26 [user-service 3/5] COPY package.json .
+#26 CACHED
+
+#27 [user-service 5/5] COPY src/ ./src/
+#27 CACHED
+
+#28 [product-service] exporting to image
+#28 exporting layers done
+#28 writing image sha256:3987986ae3336561ec815d617760b5b95621a33c911c84ba0f749fa88cfe4f87 0.0s done
+#28 naming to docker.io/library/retailflow-product-service
+#28 naming to docker.io/library/retailflow-product-service 0.0s done
+#28 DONE 0.1s
+
+#29 [order-service] exporting to image
+#29 exporting layers done
+#29 writing image sha256:d9142ec32feaad51c8802be43d687567c447840c463fb79bf512a6dd5f1b9904 done
+#29 naming to docker.io/library/retailflow-order-service 0.0s done
+#29 DONE 0.0s
+
+#30 [user-service] exporting to image
+#30 exporting layers done
+#30 writing image sha256:6a30becdd7a3f66c8f6ce66af792e0cb2802bb338cf471970c83385159e71c33 0.0s done
+#30 naming to docker.io/library/retailflow-user-service 0.0s done
+#30 DONE 0.1s
+
+#31 [order-service] resolving provenance for metadata file
+#31 DONE 0.0s
+
+#32 [product-service] resolving provenance for metadata file
+#32 DONE 0.0s
+
+#33 [user-service] resolving provenance for metadata file
+#33 DONE 0.0s
+ Image retailflow-product-service Built 
+ Image retailflow-user-service Built 
+ Image retailflow-order-service Built 
+Attaching to mongo-1, order-service-1, postgres-1, product-service-1, redis-1, user-service-1
+ Container retailflow-redis-1 Starting 
+ Container retailflow-postgres-1 Starting 
+ Container retailflow-mongo-1 Starting 
+ Container retailflow-redis-1 Started 
+ Container retailflow-redis-1 Waiting 
+redis-1  | 1:C 12 Mar 2026 14:02:55.432 * oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+redis-1  | 1:C 12 Mar 2026 14:02:55.432 * Redis version=7.4.8, bits=64, commit=00000000, modified=0, pid=1, just started
+redis-1  | 1:C 12 Mar 2026 14:02:55.432 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+redis-1  | 1:M 12 Mar 2026 14:02:55.435 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+redis-1  | 1:M 12 Mar 2026 14:02:55.435 * monotonic clock: POSIX clock_gettime
+redis-1  | 1:M 12 Mar 2026 14:02:55.440 * Running mode=standalone, port=6379.
+redis-1  | 1:M 12 Mar 2026 14:02:55.441 * Server initialized
+redis-1  | 1:M 12 Mar 2026 14:02:55.441 * Loading RDB produced by version 7.4.8
+redis-1  | 1:M 12 Mar 2026 14:02:55.441 * RDB age 2292 seconds
+redis-1  | 1:M 12 Mar 2026 14:02:55.441 * RDB memory usage when created 0.93 Mb
+redis-1  | 1:M 12 Mar 2026 14:02:55.441 * Done loading RDB, keys loaded: 0, keys expired: 0.
+redis-1  | 1:M 12 Mar 2026 14:02:55.441 * DB loaded from disk: 0.000 seconds
+redis-1  | 1:M 12 Mar 2026 14:02:55.441 * Ready to accept connections tcp
+ Container retailflow-postgres-1 Started 
+ Container retailflow-postgres-1 Waiting 
+ Container retailflow-mongo-1 Started 
+ Container retailflow-mongo-1 Waiting 
+postgres-1  | 
+postgres-1  | PostgreSQL Database directory appears to contain a database; Skipping initialization
+postgres-1  | 
+mongo-1     | 
+mongo-1     | WARNING: MongoDB 5.0+ requires a CPU with AVX support, and your current system does not appear to have that!
+mongo-1     |   see https://jira.mongodb.org/browse/SERVER-54407
+mongo-1     |   see also https://www.mongodb.com/community/forums/t/mongodb-5-0-cpu-intel-g4650-compatibility/116610/2
+mongo-1     |   see also https://github.com/docker-library/mongo/issues/485#issuecomment-891991814
+mongo-1     | 
+postgres-1  | 2026-03-12 14:02:55.709 UTC [1] LOG:  starting PostgreSQL 15.17 (Debian 15.17-1.pgdg13+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+postgres-1  | 2026-03-12 14:02:55.710 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+postgres-1  | 2026-03-12 14:02:55.710 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:55.708+00:00"},"s":"I",  "c":"CONTROL",  "id":23285,   "ctx":"main","msg":"Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify --sslDisabledProtocols 'none'"}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:55.719+00:00"},"s":"I",  "c":"NETWORK",  "id":4648601, "ctx":"main","msg":"Implicit TCP FastOpen unavailable. If TCP FastOpen is required, set tcpFastOpenServer, tcpFastOpenClient, and tcpFastOpenQueueSize."}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:55.723+00:00"},"s":"I",  "c":"STORAGE",  "id":4615611, "ctx":"initandlisten","msg":"MongoDB starting","attr":{"pid":1,"port":27017,"dbPath":"/data/db","architecture":"64-bit","host":"76f4b2d31697"}}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:55.723+00:00"},"s":"I",  "c":"CONTROL",  "id":23403,   "ctx":"initandlisten","msg":"Build Info","attr":{"buildInfo":{"version":"4.4.30","gitVersion":"4d7fa6a6260d25c5caa971dce10561690cb79dea","openSSLVersion":"OpenSSL 1.1.1f  31 Mar 2020","modules":[],"allocator":"tcmalloc","environment":{"distmod":"ubuntu2004","distarch":"x86_64","target_arch":"x86_64"}}}}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:55.723+00:00"},"s":"I",  "c":"CONTROL",  "id":51765,   "ctx":"initandlisten","msg":"Operating System","attr":{"os":{"name":"Ubuntu","version":"20.04"}}}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:55.723+00:00"},"s":"I",  "c":"CONTROL",  "id":21951,   "ctx":"initandlisten","msg":"Options set by command line","attr":{"options":{"net":{"bindIp":"*"}}}}
+postgres-1  | 2026-03-12 14:02:55.720 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:55.724+00:00"},"s":"I",  "c":"STORAGE",  "id":22270,   "ctx":"initandlisten","msg":"Storage engine to use detected by data files","attr":{"dbpath":"/data/db","storageEngine":"wiredTiger"}}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:55.725+00:00"},"s":"I",  "c":"STORAGE",  "id":22297,   "ctx":"initandlisten","msg":"Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem","tags":["startupWarnings"]}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:55.725+00:00"},"s":"I",  "c":"STORAGE",  "id":22315,   "ctx":"initandlisten","msg":"Opening WiredTiger","attr":{"config":"create,cache_size=1446M,session_max=33000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000,close_scan_interval=10,close_handle_minimum=250),statistics_log=(wait=0),verbose=[recovery_progress,checkpoint_progress,compact_progress],"}}
+postgres-1  | 2026-03-12 14:02:55.737 UTC [27] LOG:  database system was shut down at 2026-03-12 13:24:30 UTC
+postgres-1  | 2026-03-12 14:02:55.745 UTC [1] LOG:  database system is ready to accept connections
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:55.865+00:00"},"s":"I",  "c":"STORAGE",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":"[1773324175:865973][1:0x7bbccc2f5cc0], txn-recover: [WT_VERB_RECOVERY_PROGRESS] Recovering log 4 through 5"}}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:55.931+00:00"},"s":"I",  "c":"STORAGE",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":"[1773324175:931243][1:0x7bbccc2f5cc0], txn-recover: [WT_VERB_RECOVERY_PROGRESS] Recovering log 5 through 5"}}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:56.019+00:00"},"s":"I",  "c":"STORAGE",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":"[1773324176:19512][1:0x7bbccc2f5cc0], txn-recover: [WT_VERB_RECOVERY | WT_VERB_RECOVERY_PROGRESS] Main recovery loop: starting at 4/6656 to 5/256"}}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:56.144+00:00"},"s":"I",  "c":"STORAGE",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":"[1773324176:144834][1:0x7bbccc2f5cc0], txn-recover: [WT_VERB_RECOVERY_PROGRESS] Recovering log 4 through 5"}}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:56.194+00:00"},"s":"I",  "c":"STORAGE",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":"[1773324176:194325][1:0x7bbccc2f5cc0], txn-recover: [WT_VERB_RECOVERY_PROGRESS] Recovering log 5 through 5"}}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:56.232+00:00"},"s":"I",  "c":"STORAGE",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":"[1773324176:232769][1:0x7bbccc2f5cc0], txn-recover: [WT_VERB_RECOVERY | WT_VERB_RECOVERY_PROGRESS] Set global recovery timestamp: (0, 0)"}}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:56.233+00:00"},"s":"I",  "c":"STORAGE",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":"[1773324176:233295][1:0x7bbccc2f5cc0], txn-recover: [WT_VERB_RECOVERY | WT_VERB_RECOVERY_PROGRESS] Set global oldest timestamp: (0, 0)"}}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:56.248+00:00"},"s":"I",  "c":"STORAGE",  "id":22430,   "ctx":"initandlisten","msg":"WiredTiger message","attr":{"message":"[1773324176:248523][1:0x7bbccc2f5cc0], WT_SESSION.checkpoint: [WT_VERB_CHECKPOINT_PROGRESS] saving checkpoint snapshot min: 1, snapshot max: 1 snapshot count: 0, oldest timestamp: (0, 0) , meta checkpoint timestamp: (0, 0) base write gen: 63"}}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:56.274+00:00"},"s":"I",  "c":"STORAGE",  "id":4795906, "ctx":"initandlisten","msg":"WiredTiger opened","attr":{"durationMillis":549}}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:56.274+00:00"},"s":"I",  "c":"RECOVERY", "id":23987,   "ctx":"initandlisten","msg":"WiredTiger recoveryTimestamp","attr":{"recoveryTimestamp":{"$timestamp":{"t":0,"i":0}}}}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:56.286+00:00"},"s":"I",  "c":"STORAGE",  "id":22262,   "ctx":"initandlisten","msg":"Timestamp monitor starting"}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:56.295+00:00"},"s":"W",  "c":"CONTROL",  "id":22120,   "ctx":"initandlisten","msg":"Access control is not enabled for the database. Read and write access to data and configuration is unrestricted","tags":["startupWarnings"]}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:56.296+00:00"},"s":"W",  "c":"CONTROL",  "id":22184,   "ctx":"initandlisten","msg":"Soft rlimits too low","attr":{"currentValue":1024,"recommendedMinimum":64000},"tags":["startupWarnings"]}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:56.307+00:00"},"s":"I",  "c":"STORAGE",  "id":20536,   "ctx":"initandlisten","msg":"Flow Control is enabled on this deployment"}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:56.316+00:00"},"s":"I",  "c":"FTDC",     "id":20625,   "ctx":"initandlisten","msg":"Initializing full-time diagnostic data capture","attr":{"dataDirectory":"/data/db/diagnostic.data"}}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:56.317+00:00"},"s":"I",  "c":"REPL",     "id":6015317, "ctx":"initandlisten","msg":"Setting new configuration state","attr":{"newState":"ConfigReplicationDisabled","oldState":"ConfigPreStart"}}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:56.323+00:00"},"s":"I",  "c":"NETWORK",  "id":23015,   "ctx":"listener","msg":"Listening on","attr":{"address":"/tmp/mongodb-27017.sock"}}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:56.323+00:00"},"s":"I",  "c":"NETWORK",  "id":23015,   "ctx":"listener","msg":"Listening on","attr":{"address":"0.0.0.0"}}
+mongo-1     | {"t":{"$date":"2026-03-12T14:02:56.323+00:00"},"s":"I",  "c":"NETWORK",  "id":23016,   "ctx":"listener","msg":"Waiting for connections","attr":{"port":27017,"ssl":"off"}}
+mongo-1     | {"t":{"$date":"2026-03-12T14:03:00.765+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"127.0.0.1:60156","connectionId":1,"connectionCount":1}}
+mongo-1     | {"t":{"$date":"2026-03-12T14:03:00.766+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn1","msg":"client metadata","attr":{"remote":"127.0.0.1:60156","client":"conn1","doc":{"application":{"name":"MongoDB Shell"},"driver":{"name":"MongoDB Internal Client","version":"4.4.30"},"os":{"type":"Linux","name":"Ubuntu","architecture":"x86_64","version":"20.04"}}}}
+mongo-1     | {"t":{"$date":"2026-03-12T14:03:00.774+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn1","msg":"Connection ended","attr":{"remote":"127.0.0.1:60156","connectionId":1,"connectionCount":0}}
+ Container retailflow-redis-1 Healthy 
+ Container retailflow-user-service-1 Starting 
+ Container retailflow-postgres-1 Healthy 
+ Container retailflow-product-service-1 Starting 
+ Container retailflow-mongo-1 Healthy 
+ Container retailflow-order-service-1 Starting 
+ Container retailflow-user-service-1 Started 
+ Container retailflow-order-service-1 Started 
+ Container retailflow-product-service-1 Started 
+order-service-1  | Order service running on port 3000
+mongo-1          | {"t":{"$date":"2026-03-12T14:03:02.960+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"172.19.0.5:52398","connectionId":2,"connectionCount":1}}
+mongo-1          | {"t":{"$date":"2026-03-12T14:03:02.985+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn2","msg":"client metadata","attr":{"remote":"172.19.0.5:52398","client":"conn2","doc":{"driver":{"name":"nodejs|Mongoose","version":"6.20.0|8.23.0"},"platform":"Node.js v20.20.1, LE","os":{"name":"linux","architecture":"x64","version":"6.8.0-86-generic","type":"Linux"},"env":{"container":{"runtime":"docker"}}}}}
+order-service-1  | Connected to MongoDB
+user-service-1   | User service running on port 4000
+mongo-1          | {"t":{"$date":"2026-03-12T14:03:03.015+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"172.19.0.5:52412","connectionId":3,"connectionCount":2}}
+mongo-1          | {"t":{"$date":"2026-03-12T14:03:03.015+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn3","msg":"client metadata","attr":{"remote":"172.19.0.5:52412","client":"conn3","doc":{"driver":{"name":"nodejs|Mongoose","version":"6.20.0|8.23.0"},"platform":"Node.js v20.20.1, LE","os":{"name":"linux","architecture":"x64","version":"6.8.0-86-generic","type":"Linux"},"env":{"container":{"runtime":"docker"}}}}}
+user-service-1   | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1   |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1   |   errno: -3008,
+user-service-1   |   code: 'ENOTFOUND',
+user-service-1   |   syscall: 'getaddrinfo',
+user-service-1   |   hostname: 'redis'
+user-service-1   | }
+user-service-1   | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1   |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1   |   errno: -3008,
+user-service-1   |   code: 'ENOTFOUND',
+user-service-1   |   syscall: 'getaddrinfo',
+user-service-1   |   hostname: 'redis'
+user-service-1   | }
+user-service-1   | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1   |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1   |   errno: -3008,
+user-service-1   |   code: 'ENOTFOUND',
+user-service-1   |   syscall: 'getaddrinfo',
+user-service-1   |   hostname: 'redis'
+user-service-1   | }
+user-service-1   | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1   |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1   |   errno: -3008,
+user-service-1   |   code: 'ENOTFOUND',
+user-service-1   |   syscall: 'getaddrinfo',
+user-service-1   |   hostname: 'redis'
+user-service-1   | }
+user-service-1   | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1   |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1   |   errno: -3008,
+user-service-1   |   code: 'ENOTFOUND',
+user-service-1   |   syscall: 'getaddrinfo',
+user-service-1   |   hostname: 'redis'
+user-service-1   | }
+product-service-1  | INFO:     Started server process [1]
+product-service-1  | INFO:     Waiting for application startup.
+product-service-1  | INFO:     Application startup complete.
+product-service-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:05.910+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"127.0.0.1:60444","connectionId":4,"connectionCount":3}}
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:05.911+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn4","msg":"client metadata","attr":{"remote":"127.0.0.1:60444","client":"conn4","doc":{"application":{"name":"MongoDB Shell"},"driver":{"name":"MongoDB Internal Client","version":"4.4.30"},"os":{"type":"Linux","name":"Ubuntu","architecture":"x86_64","version":"20.04"}}}}
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:05.916+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn4","msg":"Connection ended","attr":{"remote":"127.0.0.1:60444","connectionId":4,"connectionCount":2}}
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:11.016+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"127.0.0.1:60448","connectionId":5,"connectionCount":3}}
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:11.017+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn5","msg":"client metadata","attr":{"remote":"127.0.0.1:60448","client":"conn5","doc":{"application":{"name":"MongoDB Shell"},"driver":{"name":"MongoDB Internal Client","version":"4.4.30"},"os":{"type":"Linux","name":"Ubuntu","architecture":"x86_64","version":"20.04"}}}}
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:11.025+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn5","msg":"Connection ended","attr":{"remote":"127.0.0.1:60448","connectionId":5,"connectionCount":2}}
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:13.511+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"172.19.0.5:33340","connectionId":6,"connectionCount":3}}
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:13.512+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn6","msg":"client metadata","attr":{"remote":"172.19.0.5:33340","client":"conn6","doc":{"driver":{"name":"nodejs|Mongoose","version":"6.20.0|8.23.0"},"platform":"Node.js v20.20.1, LE","os":{"name":"linux","architecture":"x64","version":"6.8.0-86-generic","type":"Linux"},"env":{"container":{"runtime":"docker"}}}}}
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:16.111+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"127.0.0.1:40894","connectionId":7,"connectionCount":4}}
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:16.111+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn7","msg":"client metadata","attr":{"remote":"127.0.0.1:40894","client":"conn7","doc":{"application":{"name":"MongoDB Shell"},"driver":{"name":"MongoDB Internal Client","version":"4.4.30"},"os":{"type":"Linux","name":"Ubuntu","architecture":"x86_64","version":"20.04"}}}}
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:16.117+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn7","msg":"Connection ended","attr":{"remote":"127.0.0.1:40894","connectionId":7,"connectionCount":3}}
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:21.220+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"127.0.0.1:40908","connectionId":8,"connectionCount":4}}
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:21.221+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn8","msg":"client metadata","attr":{"remote":"127.0.0.1:40908","client":"conn8","doc":{"application":{"name":"MongoDB Shell"},"driver":{"name":"MongoDB Internal Client","version":"4.4.30"},"os":{"type":"Linux","name":"Ubuntu","architecture":"x86_64","version":"20.04"}}}}
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:21.228+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn8","msg":"Connection ended","attr":{"remote":"127.0.0.1:40908","connectionId":8,"connectionCount":3}}
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:26.317+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"127.0.0.1:55980","connectionId":9,"connectionCount":4}}
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:26.317+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn9","msg":"client metadata","attr":{"remote":"127.0.0.1:55980","client":"conn9","doc":{"application":{"name":"MongoDB Shell"},"driver":{"name":"MongoDB Internal Client","version":"4.4.30"},"os":{"type":"Linux","name":"Ubuntu","architecture":"x86_64","version":"20.04"}}}}
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:26.324+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn9","msg":"Connection ended","attr":{"remote":"127.0.0.1:55980","connectionId":9,"connectionCount":3}}
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:31.414+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"127.0.0.1:55994","connectionId":10,"connectionCount":4}}
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:31.414+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn10","msg":"client metadata","attr":{"remote":"127.0.0.1:55994","client":"conn10","doc":{"application":{"name":"MongoDB Shell"},"driver":{"name":"MongoDB Internal Client","version":"4.4.30"},"os":{"type":"Linux","name":"Ubuntu","architecture":"x86_64","version":"20.04"}}}}
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:31.419+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn10","msg":"Connection ended","attr":{"remote":"127.0.0.1:55994","connectionId":10,"connectionCount":3}}
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:36.511+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"127.0.0.1:55914","connectionId":11,"connectionCount":4}}
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:36.512+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn11","msg":"client metadata","attr":{"remote":"127.0.0.1:55914","client":"conn11","doc":{"application":{"name":"MongoDB Shell"},"driver":{"name":"MongoDB Internal Client","version":"4.4.30"},"os":{"type":"Linux","name":"Ubuntu","architecture":"x86_64","version":"20.04"}}}}
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:36.518+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn11","msg":"Connection ended","attr":{"remote":"127.0.0.1:55914","connectionId":11,"connectionCount":3}}
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:41.618+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"127.0.0.1:55928","connectionId":12,"connectionCount":4}}
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:41.618+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn12","msg":"client metadata","attr":{"remote":"127.0.0.1:55928","client":"conn12","doc":{"application":{"name":"MongoDB Shell"},"driver":{"name":"MongoDB Internal Client","version":"4.4.30"},"os":{"type":"Linux","name":"Ubuntu","architecture":"x86_64","version":"20.04"}}}}
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:41.622+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn12","msg":"Connection ended","attr":{"remote":"127.0.0.1:55928","connectionId":12,"connectionCount":3}}
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:46.718+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"127.0.0.1:33518","connectionId":13,"connectionCount":4}}
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:46.719+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn13","msg":"client metadata","attr":{"remote":"127.0.0.1:33518","client":"conn13","doc":{"application":{"name":"MongoDB Shell"},"driver":{"name":"MongoDB Internal Client","version":"4.4.30"},"os":{"type":"Linux","name":"Ubuntu","architecture":"x86_64","version":"20.04"}}}}
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:46.724+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn13","msg":"Connection ended","attr":{"remote":"127.0.0.1:33518","connectionId":13,"connectionCount":3}}
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+user-service-1     | Redis error: Error: getaddrinfo ENOTFOUND redis
+user-service-1     |     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+user-service-1     |   errno: -3008,
+user-service-1     |   code: 'ENOTFOUND',
+user-service-1     |   syscall: 'getaddrinfo',
+user-service-1     |   hostname: 'redis'
+user-service-1     | }
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:51.827+00:00"},"s":"I",  "c":"NETWORK",  "id":22943,   "ctx":"listener","msg":"Connection accepted","attr":{"remote":"127.0.0.1:33520","connectionId":14,"connectionCount":4}}
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:51.827+00:00"},"s":"I",  "c":"NETWORK",  "id":51800,   "ctx":"conn14","msg":"client metadata","attr":{"remote":"127.0.0.1:33520","client":"conn14","doc":{"application":{"name":"MongoDB Shell"},"driver":{"name":"MongoDB Internal Client","version":"4.4.30"},"os":{"type":"Linux","name":"Ubuntu","architecture":"x86_64","version":"20.04"}}}}
+mongo-1            | {"t":{"$date":"2026-03-12T14:03:51.836+00:00"},"s":"I",  "c":"NETWORK",  "id":22944,   "ctx":"conn14","msg":"Connection ended","attr":{"remote":"127.0.0.1:33520","connectionId":14,"connectionCount":3}}
