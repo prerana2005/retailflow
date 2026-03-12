@@ -1,1 +1,13 @@
-node_modules/\n__pycache__/\n.env\n*.pyc\n.DS_Store
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+
+# Logs
+*.log
+
+# Python
+__pycache__/
+
+# Env files
+.env
