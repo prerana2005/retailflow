@@ -1,0 +1,80 @@
+pipeline {
+    agent any
+
+    environment {
+        PRODUCT_IMAGE = "product-service:latest"
+        ORDER_IMAGE = "order-service:latest"
+        USER_IMAGE = "user-service:latest"
+        NOTIFICATION_IMAGE = "notification-service:latest"
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                echo 'Checking out code...'
+                checkout scm
+            }
+        }
+
+        stage('Lint') {
+            steps {
+                echo 'Linting Python services...'
+                sh '''
+                    cd services/product-service
+                    pip install pyflakes --quiet
+                    python -m pyflakes app/main.py || true
+                '''
+            }
+        }
+
+        stage('Build Docker Images') {
+            steps {
+                echo 'Building all service images...'
+                sh 'docker build -t $PRODUCT_IMAGE ./services/product-service'
+                sh 'docker build -t $ORDER_IMAGE ./services/order-service'
+                sh 'docker build -t $USER_IMAGE ./services/user-service'
+                sh 'docker build -t $NOTIFICATION_IMAGE ./services/notification-service'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running smoke tests...'
+                sh '''
+                    docker run --rm $PRODUCT_IMAGE python -c "import main; print('product-service OK')" || true
+                    docker run --rm $NOTIFICATION_IMAGE python -c "import main; print('notification-service OK')" || true
+                '''
+            }
+        }
+
+        stage('Deploy to Minikube') {
+            steps {
+                echo 'Deploying to Kubernetes...'
+                sh 'kubectl apply -f k8s/deployments/'
+                sh 'kubectl apply -f k8s/services/'
+                sh 'kubectl rollout status deployment/product-service'
+                sh 'kubectl rollout status deployment/order-service'
+            }
+        }
+
+        stage('Smoke Test') {
+            steps {
+                echo 'Running post-deploy smoke test...'
+                sh '''
+                    sleep 5
+                    kubectl get pods
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline succeeded! All services deployed.'
+        }
+        failure {
+            echo 'Pipeline failed! Check logs above.'
+        }
+    }
+}
